@@ -10,11 +10,12 @@ router.post("/create", customerController.create);
 
 //To get all Customer
 router.get("/getAllCustomer", customerController.getAllCustomer);
+
+// get customer with max order
 router.get(
   "/getCustomerWithMaxOrder",
   customerController.getCustomerWithMaxOrder
 );
-// get customer with max order
 
 //exporting the router
 module.exports = router;

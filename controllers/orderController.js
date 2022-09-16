@@ -4,17 +4,19 @@ const CustomerOrder = require("../models/CustomerOrder");
 const Product = require("../models/ProductDetails");
 
 // Add an Order
+// example request
+// Post :-"http://localhost:8000/order/create"
 module.exports.create = async function (req, res) {
   // catching server error
   try {
     let customer = await Customer.findOne({ username: req.body.username });
     if (customer) {
-      // conformation api response
       let customerOrder = await CustomerOrder.create(
         // providing customer to mongoose model
         req.body.order
       );
       if (customerOrder) {
+        // getting all the products from database with help of productInfo
         for (let productItem of req.body.products) {
           let products = await Product.findOne({ productInfo: productItem });
           if (products) {
@@ -49,7 +51,8 @@ module.exports.create = async function (req, res) {
     });
   }
 };
-
+// example request
+// Get :-"http://localhost:8000/order/:username";
 module.exports.getOrderList = async function (req, res) {
   // catching server error
   try {

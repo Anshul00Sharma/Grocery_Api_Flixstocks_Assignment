@@ -2,6 +2,13 @@
 const Product = require("../models/ProductDetails");
 
 // Add a Product
+// example request
+// POST :-"http://localhost:8000/product/create"
+// body :-{
+//   productInfo: "butterchicken",
+//   price: 20,
+//   productCategory: "Meat",
+// };
 module.exports.create = async function (req, res) {
   // catching server error
   try {
@@ -29,6 +36,8 @@ module.exports.create = async function (req, res) {
 };
 
 // update price
+// example request
+// PUT :-"http://localhost:8000/product//:productInfo";
 module.exports.updatePrice = async function (req, res) {
   // catching server error
   try {
